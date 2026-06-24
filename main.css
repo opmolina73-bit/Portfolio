@@ -265,6 +265,23 @@ h1 {
   border: 2px solid var(--ink);
   background: var(--paper-soft);
   box-shadow: var(--shadow);
+  color: var(--ink);
+  cursor: pointer;
+  transform-origin: 50% 100%;
+  transition: box-shadow 180ms ease, filter 180ms ease;
+  will-change: transform, translate;
+}
+
+.route-card:hover,
+.route-card:focus-visible {
+  filter: saturate(1.12);
+  box-shadow: 1rem 1rem 0 rgba(32, 32, 32, 0.9);
+  outline: 0;
+}
+
+.route-card:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 0.28rem;
 }
 
 .route-card span,
@@ -295,6 +312,7 @@ h1 {
   top: 0;
   left: 8%;
   transform: rotate(-5deg);
+  z-index: 3;
 }
 
 .route-card.design {
@@ -302,6 +320,7 @@ h1 {
   right: 0;
   background: var(--gold);
   transform: rotate(4deg);
+  z-index: 2;
 }
 
 .route-card.cad {
@@ -309,6 +328,7 @@ h1 {
   bottom: 0;
   background: var(--mint);
   transform: rotate(-2deg);
+  z-index: 1;
 }
 
 .intro {
@@ -412,17 +432,6 @@ h2 {
   border: 2px solid var(--ink);
   background: var(--paper-soft);
   box-shadow: 0.8rem 0.8rem 0 var(--blue);
-}
-
-.timeline-panel::before {
-  content: "";
-  position: absolute;
-  width: 6rem;
-  height: 6rem;
-  right: -2.2rem;
-  top: -2.2rem;
-  background: var(--gold);
-  clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 56%, 79% 91%, 50% 69%, 21% 91%, 32% 56%, 2% 35%, 39% 35%);
 }
 
 .dates {

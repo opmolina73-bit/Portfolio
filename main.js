@@ -4,6 +4,7 @@ const dots = [...document.querySelectorAll(".rail-dot")];
 const routeCards = [...document.querySelectorAll(".route-card")];
 const canvas = document.querySelector("#route-canvas");
 const ctx = canvas.getContext("2d");
+const animatedSteps = new WeakSet();
 
 let width = 0;
 let height = 0;
@@ -113,10 +114,13 @@ function initAnime() {
     .add(
       {
         targets: ".route-card",
-        translateY: [70, 0],
-        rotate: (el) => el.classList.contains("design") ? [13, 4] : el.classList.contains("camera") ? [-14, -5] : [-11, -2],
+        translateX: (el) => el.classList.contains("design") ? [-90, 0] : el.classList.contains("camera") ? [80, 0] : [55, 0],
+        translateY: (el) => el.classList.contains("cad") ? [40, 0] : [170, 0],
+        scale: [0.72, 1],
+        rotate: (el) => el.classList.contains("design") ? [-10, 4] : el.classList.contains("camera") ? [16, -5] : [10, -2],
         opacity: [0, 1],
-        delay: anime.stagger(120),
+        delay: anime.stagger(150, { from: "last" }),
+        duration: 1050,
       },
       "-=760",
     );
@@ -128,6 +132,10 @@ function initAnime() {
 
         const index = steps.indexOf(entry.target);
         setActiveStep(index);
+
+        if (animatedSteps.has(entry.target)) return;
+        animatedSteps.add(entry.target);
+
         entry.target.classList.add("is-visible");
 
         anime({
