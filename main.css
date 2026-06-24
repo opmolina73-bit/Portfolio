@@ -658,3 +658,55 @@ body {
     align-self: flex-start;
   }
 }
+
+/* Add to main.css */
+
+.code-accent {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--color-blue);
+  opacity: 0.6;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  animation: float 4s ease-in-out infinite;
+}
+
+.vertical-text-secondary {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  opacity: 0.5;
+  margin-top: 2rem;
+  writing-mode: vertical-lr;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Make shapes more responsive to scroll */
+.vector-shape {
+  transition: transform 0.1s ease-out;
+}
+
+.shape-star {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.shape-polygon {
+  animation: rotate-slower -15s linear infinite;
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-slower {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
